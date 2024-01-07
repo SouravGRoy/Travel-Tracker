@@ -1,0 +1,214 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #00a9d4;
+
+  color: #d3ddef;
+}
+.header{
+  text-align: center;
+}
+h1{
+  transition-property:color;
+}
+h1:hover{
+ color: #4a80f5;
+}
+.head{
+  color: #bbdaa4;
+}
+.tracker{
+  color: aliceblue;
+
+}
+.ag-canvas {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  position: relative;
+  visibility: visible;
+
+  width: 100%;
+  height: 100%;
+  padding: 3rem 1rem;
+  opacity: 1;
+  transition: opacity 0.5s;
+
+  z-index: -1;
+  margin-top: -90px;
+}
+.ag-canvas_svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  margin-left: 1rem;
+}
+.ag-canvas_svg path {
+  fill: #383d46;
+  fill-opacity: 1;
+  stroke: aliceblue;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 767px) {
+  .ag-canvas {
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: auto;
+    padding: 4rem 1rem 1rem;
+  }
+  .ag-canvas_svg {
+    max-height: calc(100% - 6rem);
+    margin-left: 0;
+  }
+}
+
+input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+
+:root {
+  --text-color: hsla(210, 50%, 85%, 1);
+  --shadow-color: hsla(210, 40%, 52%, .4);
+  --btn-color:#00a9d4;
+  --bg-color: #141218;
+}
+
+button {
+  position:relative;
+  padding: 10px 20px;  
+  border: none;
+  background: none;
+  cursor: pointer;
+  
+  font-family: "Source Code Pro";
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 30px;  
+  color: var(--text-color);
+  
+  background-color: var(--btn-color);
+  box-shadow: var(--shadow-color) 2px 2px 22px;
+  border-radius: 4px; 
+  z-index: 0;  
+  overflow: hidden;   
+}
+
+button:focus {
+  outline-color: transparent;
+  box-shadow: var(--btn-color) 2px 2px 22px;
+}
+
+.right::after, button::after {
+  content: var(--content);
+  display: block;
+  position: absolute;
+  white-space: nowrap;
+  padding: 40px 40px;
+  pointer-events:none;
+}
+
+button::after{
+  font-weight: 200;
+  top: -30px;
+  left: -20px;
+} 
+
+.right, .left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.right {
+  left: 66%;
+}
+.left {
+  right: 66%;
+}
+.right::after {
+  top: -30px;
+  left: calc(-66% - 20px);
+  
+  background-color: var(--bg-color);
+  color:transparent;
+  transition: transform .4s ease-out;
+  transform: translate(0, -90%) rotate(0deg)
+}
+
+button:hover .right::after {
+  transform: translate(0, -47%) rotate(0deg)
+}
+
+button .right:hover::after {
+  transform: translate(0, -50%) rotate(-7deg)
+}
+
+button .left:hover ~ .right::after {
+  transform: translate(0, -50%) rotate(7deg)
+}
+
+/* bubbles */
+button::before {
+  content: '';
+  pointer-events: none;
+  opacity: .6;
+  background:
+    radial-gradient(circle at 20% 35%,  transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: bubbles 5s linear infinite both;
+}
+
+@keyframes bubbles {
+  from {
+    transform: translate();
+  }
+  to {
+    transform: translate(0, -66.666%);
+  }
+}
+
+.total-count {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  position: absolute;
+  padding: 15px;
+  left: 0;
+  bottom: 0;
+}
